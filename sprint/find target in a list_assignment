@@ -1,0 +1,19 @@
+3 7 
+first_element:34
+length:5
+target:6
+result:0
+7 first_element address
+check1:4 address:0
+         target yes
+    no:1 address one 
+         address
+       1 counter one counter
+check2:5 counter length check1
+  halt:9
+   yes:7 one result
+       3 halt 
+
+counter:0
+one:1  
+4 5 6 7 8 
