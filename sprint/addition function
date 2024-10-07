@@ -1,0 +1,52 @@
+0 50 200 
+0 50 201
+0 50 202
+0 50 203
+0 50 204
+
+0 50 300
+0 50 301
+0 50 302
+0 10 303
+0 50 304
+
+3 start
+start:0 calling constant_add
+      3 calling:add
+      200 5 250
+      0 jumping constant_add
+      3 jumping:add
+      300 5 350
+      9
+
+
+
+
+
+add:1 return_add one list_add
+    1 return_add two  length_add
+    1 return_add three result_add
+    7 list_add:0 adding
+    7 result_add:0 summer
+    7 summer sum
+    7 sum zero_adder
+    0 0 zero_adder:0
+    1 adding length_add:0 last_add
+op_add:1 adding:0 summer:0 sum:0
+       1 adding one adding
+       5 adding last_add op_add
+    1 return_add four return_add
+    7 return_add back_add
+    3 back_add:0
+    return_add:constant_add:0
+    last_add:0
+
+
+one:1
+two:2
+three:3
+four:4
+
+
+
+
