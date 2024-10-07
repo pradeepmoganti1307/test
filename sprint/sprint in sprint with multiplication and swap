@@ -1,0 +1,170 @@
+3 start
+true_location:list
+first_element_location:list
+next_element_location:0
+next_actual_location:0
+to_store_location:0 
+to_get_location:0
+next_cell1_location:0
+next_cell2_location:0
+next_store_location:0
+next_box1_location:0 
+next_box2_location:0 
+next_jump_location:0 
+next_block1_location:0
+next_block2_location:0
+next_block_store_location:0
+check_instruction:0
+swapper:0
+value:0
+Two:2
+one:1
+One:1
+two:2
+three:3
+four:4
+five:5
+seven:7
+nine:9
+eight:8
+thirteen:13
+
+halt:9
+start:7 first_element_location   current_element_location
+      7 current_element_location:0  check_instruction
+      4 check_instruction  three  jump
+      4 check_instruction  nine   halt 
+      4 check_instruction  seven  copy
+      4 check_instruction  One    decide_add_subtract   
+      4 check_instruction  two    decide_add_subtract
+      4 check_instruction  four   select_equal_less
+      4 check_instruction  five   select_equal_less
+      4 check_instruction  thirteen multiple
+      4 check_instruction  eight swap
+
+select_equal_less:4 check_instruction four select_equal
+select_less:7 five selector 3 equal_less
+select_equal:7 four selector 3 equal_less
+   
+decide_add_subtract:4 check_instruction one decide_add
+decide_subtract:7 two decider 3 add_subtract
+decide_add:7 one decider      3 add_subtract
+   
+
+jump:1 first_element_location one next_element_location
+     7 next_element_location next_instruct_location
+     1 next_instruct_location:0 first_element_location next_actual_location
+     2 next_element_location true_location value
+     2 next_actual_location value next_actual_location
+     7 next_actual_location first_element_location
+     3 start 
+
+copy:1 first_element_location one next_element_location
+     1 next_element_location one to_store_location
+     7 to_store_location to_store_actual_location
+     1 to_store_actual_location:0 true_location to_store_actual_location
+     2 to_store_actual_location one to_store_actual_location
+     7 next_element_location next_element_location_value
+     1 true_location next_element_location_value:0 to_get_location
+     2 to_get_location one to_get_location
+     7 to_get_location to_get_actual_location
+     7 to_store_actual_location to_store_actual_location_last
+     7 to_get_actual_location:0 to_store_actual_location_last:0
+     1 to_store_location one to_store_location
+     7 to_store_location first_element_location
+     3 start
+
+add_subtract:1 first_element_location one next_cell1_location
+             1 next_cell1_location one next_cell2_location
+             1 next_cell2_location one next_store_location
+             7 next_cell1_location next_cell1_actual_location
+             1 next_cell1_actual_location:0 true_location next_cell1_actual_location
+             2 next_cell1_actual_location one next_cell1_actual_location
+             7 next_cell2_location next_cell2_actual_location
+             1 next_cell2_actual_location:0 true_location next_cell2_actual_location
+             2 next_cell2_actual_location one next_cell2_actual_location
+             7 next_store_location next_store_actual_location
+             1 next_store_actual_location:0 true_location next_store_actual_location
+             2 next_store_actual_location one next_store_actual_location
+             7 next_cell1_actual_location next_cell1_final_location
+             7 next_cell2_actual_location next_cell2_final_location
+             7 next_store_actual_location next_store_final_location
+decider:1 next_cell1_final_location:0 next_cell2_final_location:0 
+          next_store_final_location:0
+        1 next_store_location one next_store_location
+        7 next_store_location first_element_location
+        3 start
+equal_less:1 first_element_location one next_box1_location    
+           1 next_box1_location one next_box2_location 
+           1 next_box2_location one next_jump_location 
+           7 next_box1_location next_box1_actual_location
+           1 next_box1_actual_location:0 true_location next_box1_actual_location
+           2 next_box1_actual_location one next_box1_actual_location    
+           7 next_box2_location next_box2_actual_location
+           1 next_box2_actual_location:0 true_location next_box2_actual_location
+           2 next_box2_actual_location one next_box2_actual_location
+           7 next_jump_location next_jump_actual_location
+           1 next_jump_actual_location:0 true_location next_jump_actual_location
+           2 next_jump_actual_location one next_jump_actual_location  
+           7 next_box1_actual_location next_box1_final_location
+           7 next_box2_actual_location next_box2_final_location
+selector:4 next_box1_final_location:0 next_box2_final_location:0 jump_maker
+         1 next_jump_location one next_jump_location
+         7 next_jump_location first_element_location
+         3 start
+jump_maker:7 next_jump_actual_location first_element_location
+           3 start
+
+multiple:1 first_element_location one next_block1_location
+         1 next_block1_location one next_block2_location
+         1 next_block2_location one next_block_store_location
+         7 next_block1_location next_block1_actual_location
+         1 next_block1_actual_location:0 true_location next_block1_actual_location
+         2 next_block1_actual_location one next_block1_actual_location
+         7 next_block2_location next_block2_actual_location
+         1 next_block2_actual_location:0 true_location next_block2_actual_location
+         2 next_block2_actual_location one next_block2_actual_location
+         7 next_block_store_location next_block_store_actual_location
+         1 next_block_store_actual_location:0 true_location 
+           next_block_store_actual_location
+         2 next_block_store_actual_location one next_block_store_actual_location
+         7 next_block1_actual_location next_block1_final_location
+         7 next_block2_actual_location next_block2_final_location
+         7 next_block_store_actual_location next_block_store_final_location
+         7 next_block1_final_location:0 multiplicand
+         7 next_block2_final_location:0 multiplier
+         7 next_block_store_final_location:0 result
+
+  chk:4 counter multiplier no
+      1 multiplicand result result
+      1 counter one counter 
+      3 chk
+   no:7 next_block_store_final_location final_block_store_final_location
+      7 result final_block_store_final_location:0
+      1 next_block_store_location one next_block_store_location
+      7 next_block_store_location first_element_location
+      3 start
+      multiplicand:0
+      multiplier:0 
+      counter:0
+      result:0
+swap:1 first_element_location one next_element_location
+     1 next_element_location one next_actual_location
+     7 next_element_location next_element_actual_location
+     1 next_element_actual_location:0 true_location to_get_location
+     2 to_get_location one to_get_location
+     7 next_actual_location next_actual_element_location
+     1 next_actual_element_location:0 true_location to_store_location
+     2 to_store_location one to_store_location
+     7 to_store_location to_store_actual_element_location 
+     7 to_store_actual_element_location:0 swapper  
+     7 to_get_location to_get_actual_element_location 
+     7 to_store_location to_store_element_location
+     7 to_get_actual_element_location:0 to_store_element_location:0
+     7 to_get_location to_get_element_location
+     7 swapper to_get_element_location:0
+     1 next_actual_location one first_element_location
+     3 start
+9 0 0 
+list:3 6 12 3 0 13 3 4 5 9
+
