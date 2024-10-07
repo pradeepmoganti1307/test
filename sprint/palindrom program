@@ -1,0 +1,35 @@
+3 start
+number:453
+result:0
+start:7 number cnumber 
+      7 number remainder
+ chk1:5 zero cnumber chk2
+      4 number rnumber yes-f
+ halt:9
+yes-f:7 one result 
+      3 halt
+ chk2:5 remainder ten chk3
+   no:2 remainder ten remainder 
+      1 quotient  one quotient
+      3 chk2
+ chk3:5 counter rnumber yes
+      1 rnum2 remainder rnum2
+      7 rnum2 rnumber
+      7 zero rnum2
+      7 quotient cnumber
+      7 quotient remainder
+      7 zero quotient 
+      7 zero counter 
+      3 chk1
+  yes:1 rnum2 ten rnum2
+      1 counter one counter
+      3 chk3
+cnumber:0
+remainder:0
+ten:10
+quotient:0
+rnumber:0
+rnum2:0
+zero:0
+one:1
+counter:0 
